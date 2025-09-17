@@ -1,4 +1,4 @@
-/* Общие стили */
+/* Глобальные стили */
 body {
   margin: 0;
   padding: 0;
@@ -7,45 +7,45 @@ body {
   display: flex;
 }
 
-/* Контейнер приложения */
-.app-container {
-  display: flex;
-  width: 100%;
-}
-
 /* Сайдбар */
 .sidebar {
-  width: 220px;
+  width: 250px;
   background: #1e2a3a;
   color: white;
-  padding: 20px;
+  padding: 30px 20px;
   min-height: 100vh;
 }
 
 .sidebar h2 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 30px;
+  font-weight: bold;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   cursor: pointer;
-  color: #ddd;
-  opacity: 0.8;
+  color: #ccc;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.sidebar li:hover {
+  color: #fff;
 }
 
 .sidebar li.active {
   color: white;
   font-weight: bold;
-  opacity: 1;
 }
 
-/* Контент */
+/* Основной контент */
 .main-content {
   flex-grow: 1;
   padding: 30px;
@@ -54,25 +54,24 @@ body {
 /* Заголовок */
 .header h1 {
   font-size: 28px;
-  margin: 0 0 20px;
+  margin: 0 0 25px;
 }
 
-/* Верхняя панель фильтров */
+/* Панель фильтров */
 .top-bar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr repeat(6, auto);
   gap: 10px;
-  margin-bottom: 25px;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .top-bar input {
-  flex-grow: 1;
-  min-width: 220px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  width: 100%;
 }
 
 .top-bar button {
@@ -84,9 +83,6 @@ body {
   white-space: nowrap;
 }
 
-/* Кнопки */
-.btn-upload {}
-
 .btn-add {
   background: #1e88e5;
   color: white;
@@ -96,7 +92,7 @@ body {
 /* Галерея */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* ширина карточек */
+  grid-template-columns: repeat(4, 1fr); /* ровно 4 карточки */
   gap: 20px;
 }
 
@@ -125,7 +121,6 @@ body {
   margin-bottom: 8px;
 }
 
-/* Статусы */
 .card-status {
   font-size: 13px;
   padding: 4px 8px;
@@ -149,7 +144,6 @@ body {
   color: #c62828;
 }
 
-/* Кнопки карточек */
 .card-actions {
   margin-top: auto;
   display: flex;
