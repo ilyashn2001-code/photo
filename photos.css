@@ -1,23 +1,29 @@
+/* Общие стили */
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f7f9fc;
-  color: #222;
-}
-
-.app-container {
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f6f8fa;
   display: flex;
 }
 
+/* Контейнер приложения */
+.app-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Сайдбар */
 .sidebar {
   width: 220px;
-  background-color: #1e2a3a;
+  background: #1e2a3a;
   color: white;
   padding: 20px;
   min-height: 100vh;
 }
 
 .sidebar h2 {
+  font-size: 20px;
   margin-bottom: 30px;
 }
 
@@ -26,41 +32,47 @@ body {
   padding: 0;
 }
 
-.sidebar ul li {
+.sidebar li {
   margin-bottom: 15px;
   cursor: pointer;
+  color: #ddd;
   opacity: 0.8;
 }
 
-.sidebar ul li.active {
+.sidebar li.active {
+  color: white;
   font-weight: bold;
   opacity: 1;
 }
 
+/* Контент */
 .main-content {
   flex-grow: 1;
   padding: 30px;
 }
 
+/* Заголовок */
 .header h1 {
   font-size: 28px;
   margin: 0 0 20px;
 }
 
+/* Верхняя панель фильтров */
 .top-bar {
-  display: grid;
-  grid-template-columns: 1fr repeat(6, auto);
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
   margin-bottom: 25px;
+  align-items: center;
 }
 
 .top-bar input {
+  flex-grow: 1;
+  min-width: 220px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
-  width: 100%;
 }
 
 .top-bar button {
@@ -72,9 +84,8 @@ body {
   white-space: nowrap;
 }
 
-.btn-upload {
-  /* можно цвет выделить, если нужно */
-}
+/* Кнопки */
+.btn-upload {}
 
 .btn-add {
   background: #1e88e5;
@@ -82,17 +93,14 @@ body {
   border: none;
 }
 
-.arrow {
-  font-size: 10px;
-  margin-left: 4px;
-}
-
+/* Галерея */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* сделал чуть шире: 300px вместо 250px */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* ширина карточек */
   gap: 20px;
 }
 
+/* Карточка */
 .card {
   background: white;
   border-radius: 10px;
@@ -104,7 +112,7 @@ body {
 
 .card img {
   width: 100%;
-  height: 180px; /* чуть выше картинка */
+  height: 180px;
   object-fit: cover;
 }
 
@@ -117,6 +125,7 @@ body {
   margin-bottom: 8px;
 }
 
+/* Статусы */
 .card-status {
   font-size: 13px;
   padding: 4px 8px;
@@ -140,8 +149,9 @@ body {
   color: #c62828;
 }
 
+/* Кнопки карточек */
 .card-actions {
-  margin-top: auto; /* кнопки вниз */
+  margin-top: auto;
   display: flex;
   gap: 10px;
 }
