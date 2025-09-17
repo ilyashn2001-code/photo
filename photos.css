@@ -17,19 +17,28 @@ h1 {
 }
 
 .top-bar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr repeat(6, auto);
   gap: 10px;
+  align-items: center;
   margin-bottom: 25px;
 }
 
-.top-bar input,
+.top-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
 .top-bar select,
 .top-bar button {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .top-bar button.add {
@@ -38,6 +47,12 @@ h1 {
   border: none;
   cursor: pointer;
 }
+
+h1 {
+  font-size: 28px;
+  margin: 30px 0 20px;
+}
+
 
 .gallery {
   display: grid;
