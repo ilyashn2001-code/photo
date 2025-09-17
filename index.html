@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Фотографии</title>
+  <link rel="stylesheet" href="photos.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>LTC Control</h2>
+      <ul>
+        <li>Дашборд</li>
+        <li>Объекты</li>
+        <li>Журналы</li>
+        <li class="active">Фотографии</li>
+        <li>Отчёты</li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <h1>Фотографии</h1>
+        <button class="upload-btn">Загрузить</button>
+      </header>
+
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Поиск по описанию или объекту" />
+        <button>За дату <span class="arrow">▼</span></button>
+        <button>Объект <span class="arrow">▼</span></button>
+        <button>Источник <span class="arrow">▼</span></button>
+        <button>Статус <span class="arrow">▼</span></button>
+      </div>
+
+      <div class="cards-container" id="photoList">
+        <!-- Карточки фоток генерируются через js -->
+      </div>
+    </main>
+  </div>
+
+  <script src="photos.js"></script>
+</body>
+</html>
