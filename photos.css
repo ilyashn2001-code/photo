@@ -5,15 +5,46 @@ body {
   color: #222;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
+.app-container {
+  display: flex;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #1e2a3a;
+  color: white;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.sidebar ul li.active {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.main-content {
+  flex-grow: 1;
   padding: 30px;
 }
 
-h1 {
+.header h1 {
   font-size: 28px;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 }
 
 .top-bar {
@@ -32,31 +63,33 @@ h1 {
   width: 100%;
 }
 
-.top-bar select,
 .top-bar button {
-  padding: 10px;
+  padding: 10px 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 14px;
+  background: white;
+  cursor: pointer;
   white-space: nowrap;
 }
 
-.top-bar button.add {
+.btn-upload {
+  /* можно цвет выделить, если нужно */
+}
+
+.btn-add {
   background: #1e88e5;
   color: white;
   border: none;
-  cursor: pointer;
 }
 
-h1 {
-  font-size: 28px;
-  margin: 30px 0 20px;
+.arrow {
+  font-size: 10px;
+  margin-left: 4px;
 }
-
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* сделал чуть шире: 300px вместо 250px */
   gap: 20px;
 }
 
@@ -71,7 +104,7 @@ h1 {
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: 180px; /* чуть выше картинка */
   object-fit: cover;
 }
 
@@ -107,8 +140,13 @@ h1 {
   color: #c62828;
 }
 
+.card-actions {
+  margin-top: auto; /* кнопки вниз */
+  display: flex;
+  gap: 10px;
+}
+
 .card-actions button {
-  margin-right: 6px;
   font-size: 13px;
   padding: 6px 10px;
   border: 1px solid #ccc;
