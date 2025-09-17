@@ -7,20 +7,32 @@
   <link rel="stylesheet" href="photos.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Фотографии</h1>
-
-    <div class="top-bar">
-      <input type="text" placeholder="Поиск по описанию или объекту" />
-      <select><option>Дата</option></select>
-      <select><option>Объект</option></select>
-      <select><option>Источник</option></select>
-      <select><option>Статус</option></select>
-      <button>Загрузить</button>
-      <button class="add">+ Добавить фото</button>
-    </div>
-
-    <div id="gallery" class="gallery"></div>
+  <div class="app-container">
+    <aside class="sidebar">
+      <h2>LTC Control</h2>
+      <ul>
+        <li>Дашборд</li>
+        <li>Объекты</li>
+        <li>Журналы</li>
+        <li class="active">Фотографии</li>
+        <li>Отчёты</li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <div class="header">
+        <h1>Фотографии</h1>
+      </div>
+      <div class="top-bar">
+        <input type="text" id="searchInput" placeholder="Поиск по описанию или объекту" />
+        <button>Дата <span class="arrow">▼</span></button>
+        <button>Объект <span class="arrow">▼</span></button>
+        <button>Источник <span class="arrow">▼</span></button>
+        <button>Статус <span class="arrow">▼</span></button>
+        <button class="btn-upload">Загрузить</button>
+        <button class="btn-add">+ Добавить фото</button>
+      </div>
+      <div id="gallery" class="gallery"></div>
+    </main>
   </div>
 
   <script src="photos.js"></script>
