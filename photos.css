@@ -14,7 +14,7 @@ body {
 
 /* Сайдбар */
 .sidebar {
-  width: 220px;
+  width: 180px; /* уменьшено с 220px */
   background-color: #1e2a3a;
   color: white;
   padding: 20px;
@@ -23,7 +23,7 @@ body {
 
 .sidebar h2 {
   margin-bottom: 30px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .sidebar ul {
@@ -35,6 +35,7 @@ body {
   margin-bottom: 15px;
   cursor: pointer;
   opacity: 0.8;
+  font-size: 14px;
 }
 
 .sidebar ul li.active {
@@ -50,7 +51,7 @@ body {
 }
 
 .header h1 {
-  font-size: 28px;
+  font-size: 26px;
   margin-bottom: 20px;
 }
 
@@ -73,20 +74,23 @@ body {
   min-width: 220px;
 }
 
+/* Уменьшенный треугольник в select */
 .top-bar select {
   padding: 8px 10px 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath fill='%23000' d='M0 0l4 5 4-5z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l2 3 2-3z' fill='%23333'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: 8px 5px; /* уменьшено */
+  background-size: 4px 3px; /* уменьшено с 8x5 */
 }
 
+/* Кнопки */
 .btn-upload {
   background: #e0e0e0;
+  color: #333;
   border: none;
   border-radius: 6px;
   padding: 10px 14px;
@@ -102,7 +106,7 @@ body {
   cursor: pointer;
 }
 
-/* Галерея карточек */
+/* Галерея */
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
