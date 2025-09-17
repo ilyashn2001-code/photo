@@ -158,3 +158,24 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+/* Уменьшение стрелки в кнопках фильтра */
+.top-bar button .arrow {
+  font-size: 7px; /* было 10px */
+  margin-left: 4px;
+}
+
+/* Кнопка "Загрузить" — серая */
+.btn-upload {
+  background: #e0e0e0;
+  border: none;
+  color: #333;
+}
+
+/* Кнопка "+ Добавить фото" — синяя */
+.btn-add {
+  background: #1e88e5;
+  color: white;
+  border: none;
+}
+
