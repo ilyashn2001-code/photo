@@ -1,46 +1,36 @@
 const photos = [
-  { title: 'Автосалон Hyundai', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Hyundai' },
-  { title: 'Жилой дом', status: 'Ожидают проверки', imageUrl: 'https://via.placeholder.com/400x200?text=Жилой+дом' },
-  { title: 'Школа №5', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Школа+№5' },
-  { title: 'Парк "Северный"', status: 'Проблемные', imageUrl: 'https://via.placeholder.com/400x200?text=Парк+Северный' },
-  { title: 'Метро "Центр"', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Метро+Центр' },
-  { title: 'Кафе "БургХаус"', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Кафе+BurgHouse' },
-  { title: 'Магазин "Уют"', status: 'Ожидают проверки', imageUrl: 'https://via.placeholder.com/400x200?text=Магазин+Уют' },
-  { title: 'Больница №3', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Больница+№3' },
-  { title: 'Салон красоты "Мила"', status: 'Проблемные', imageUrl: 'https://via.placeholder.com/400x200?text=Салон+Мила' },
-  { title: 'Спорткомплекс', status: 'Ожидают проверки', imageUrl: 'https://via.placeholder.com/400x200?text=Спорткомплекс' },
-  { title: 'Офисное здание "Грин"', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Офис+Грин' },
-  { title: 'Мечеть "Свет мира"', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Мечеть+Свет+мира' },
-  { title: 'Завод "ТехПром"', status: 'Проблемные', imageUrl: 'https://via.placeholder.com/400x200?text=Завод+ТехПром' },
-  { title: 'Библиотека', status: 'Ожидают проверки', imageUrl: 'https://via.placeholder.com/400x200?text=Библиотека' },
-  { title: 'Почтовое отделение', status: 'Проверено', imageUrl: 'https://via.placeholder.com/400x200?text=Почтовое+отделение' },
+  { title: "Строительство школы", img: "school_modern.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Офисное здание", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Метро 'Юг'", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Парк 'Центральный'", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
+  { title: "Детский сад №12", img: "kindergarten_12.png", status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Жилой дом, ул. Лесная", img: "residential_lesnaya.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Завод 'ТехПром'", img: "factory_techprom.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Торговый центр", img: "mall_main.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Кафе 'БургХаус'", img: "cafe_burghaus.png", status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Автосалон Hyundai", img: "dealer_hyundai.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Мечеть 'Свет мира'", img: "mosque_light_of_world.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Больница №3", img: "hospital_3.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Салон красоты 'Мила'", img: "salon_mila.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Спорткомплекс", img: "sports_complex.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Почтовое отделение", img: "post_office.png", status: "Проверено", statusClass: "status-checked" }
 ];
 
-function renderPhotos(list) {
-  const container = document.getElementById('photoList');
-  container.innerHTML = '';
-  list.forEach(photo => {
-    const card = document.createElement('div');
-    card.className = 'photo-card';
-    card.innerHTML = `
-      <img src="${photo.imageUrl}" alt="${photo.title}">
-      <div class="card-body">
-        <h3>${photo.title}</h3>
-        <span class="status">${photo.status}</span>
-        <div class="actions">
-          <button>Открыть</button>
-          <button>✏️</button>
-        </div>
+const gallery = document.getElementById("gallery");
+
+photos.forEach(({ title, img, status, statusClass }) => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="images/${img}" alt="${title}" />
+    <div class="card-content">
+      <div class="card-title">${title}</div>
+      <div class="card-status ${statusClass}">${status}</div>
+      <div class="card-actions">
+        <button>Открыть</button>
+        <button>✏️</button>
       </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-document.getElementById('searchInput').addEventListener('input', function() {
-  const val = this.value.toLowerCase();
-  const filtered = photos.filter(p => p.title.toLowerCase().includes(val));
-  renderPhotos(filtered);
+    </div>
+  `;
+  gallery.appendChild(card);
 });
-
-renderPhotos(photos);
