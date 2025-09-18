@@ -18,20 +18,17 @@ body {
 
 /* ========== САЙДБАР ========== */
 .sidebar {
-  width: 180px;
+  width: 220px;
   background-color: #1e2a3a;
   color: white;
-  padding: 0 20px;
+  padding: 20px;
   min-height: 100vh;
 }
 
-.sidebar-header {
-  background-color: #1e2a3a;
-  padding: 16px 0;
-  text-align: center;
+.sidebar h2 {
   font-size: 18px;
-  font-weight: bold;
   margin-bottom: 30px;
+  line-height: 1.2;
 }
 
 .sidebar ul {
@@ -39,14 +36,14 @@ body {
   padding: 0;
 }
 
-.sidebar ul li {
+.sidebar li {
   margin-bottom: 15px;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 0.85;
   font-size: 14px;
 }
 
-.sidebar ul li.active {
+.sidebar li.active {
   font-weight: bold;
   opacity: 1;
 }
@@ -81,9 +78,10 @@ body {
   min-width: 220px;
 }
 
-/* Кнопки фильтра и действий */
-.top-bar button {
-  padding: 10px 14px;
+/* Обычные фильтры с треугольником */
+.top-bar .filter-btn {
+  position: relative;
+  padding: 10px 30px 10px 14px;
   border-radius: 6px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -91,7 +89,20 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+}
+
+/* Стрелка вниз как в "Объектах" */
+.top-bar .filter-btn::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform: translateY(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #333;
 }
 
 /* Кнопка "Загрузить" */
@@ -99,6 +110,9 @@ body {
   background: #e0e0e0;
   color: #333;
   border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 /* Кнопка "+ Добавить фото" */
@@ -106,6 +120,9 @@ body {
   background: #1e88e5;
   color: white;
   border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 /* ========== ГАЛЕРЕЯ ========== */
@@ -171,6 +188,7 @@ body {
   gap: 10px;
 }
 
+/* Кнопки карточек — без карандаша */
 .card-actions button {
   font-size: 13px;
   padding: 6px 10px;
@@ -178,4 +196,9 @@ body {
   background: white;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* Убрать редактирование/карандашик */
+.card-actions button.edit-btn {
+  display: none;
 }
