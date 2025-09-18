@@ -98,40 +98,43 @@ body {
   min-width: 220px;
 }
 
-/* Кнопки фильтров с треугольником вниз */
+/* Общий стиль кнопок фильтров */
 .top-bar button {
-  position: relative;
-  padding: 8px 28px 8px 12px;
+  padding: 10px 14px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 14px;
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
+/* Стрелка вниз (▼) */
 .top-bar button span.arrow {
-  position: absolute;
-  right: 10px;
   font-size: 10px;
-  color: #333;
+  margin-left: 4px;
+  margin-top: 2px;
 }
 
-/* Кнопка "Загрузить" */
+/* Загрузить — серая кнопка */
 .top-bar .btn-upload {
   background: #e0e0e0;
   color: #333;
   border: none;
+  font-weight: 500;
 }
 
-/* Кнопка "+ Добавить фото" */
+/* Добавить фото — синяя кнопка */
 .top-bar .btn-add {
   background: #1e88e5;
   color: white;
   border: none;
+  font-weight: 500;
 }
+
 
 /* ========== ГАЛЕРЕЯ ========== */
 .gallery {
