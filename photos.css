@@ -72,25 +72,14 @@ body {
   flex-grow: 1;
   padding: 30px;
   overflow-x: hidden;
-  min-width: 0; /* 👈 ВАЖНО: добавили это */
+  min-width: 0;
 }
-
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  padding-top: 10px; /* <- это можно подрегулировать под твой вкус */
+  margin: 0 0 20px 0;
+  padding-top: 10px;
 }
 
-.header h1 {
-  font-size: 28px;
-  font-weight: 600;
-  color: #1e2a3a;
-  margin: 0;
-}
 
 
 /* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
