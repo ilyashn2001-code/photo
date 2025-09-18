@@ -76,9 +76,11 @@ body {
 
 .header h1 {
   font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #1e2a3a;
 }
+
 
 /* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
 .top-bar {
