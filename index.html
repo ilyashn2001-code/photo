@@ -8,9 +8,8 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- САЙДБАР -->
     <aside class="sidebar">
-      <h2>LTC<br>Control</h2>
+      <div class="sidebar-header">LTC Control</div>
       <ul>
         <li>Дашборд</li>
         <li>Объекты</li>
@@ -20,64 +19,25 @@
       </ul>
     </aside>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <main class="main-content">
       <div class="header">
         <h1>Фотографии</h1>
       </div>
 
-      <!-- ФИЛЬТРЫ -->
       <div class="top-bar">
-        <input type="text" placeholder="Поиск по описанию или объекту" />
-
-        <button class="filter-btn">Дата</button>
-        <button class="filter-btn">Объект</button>
-        <button class="filter-btn">Источник</button>
-        <button class="filter-btn">Статус</button>
-
+        <input type="text" id="searchInput" placeholder="Поиск по описанию или объекту" />
+        <button>Дата</button>
+        <button>Объект</button>
+        <button>Источник</button>
+        <button>Статус</button>
         <button class="btn-upload">Загрузить</button>
         <button class="btn-add">+ Добавить фото</button>
       </div>
 
-      <!-- ГАЛЕРЕЯ -->
-      <div class="gallery">
-        <!-- Пример карточки -->
-        <div class="card">
-          <img src="https://via.placeholder.com/300x180" alt="Фото" />
-          <div class="card-content">
-            <div class="card-title">Строительство школы</div>
-            <div class="card-status status-checked">Проверено</div>
-            <div class="card-actions">
-              <button>Открыть</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/300x180" alt="Фото" />
-          <div class="card-content">
-            <div class="card-title">Офисное здание</div>
-            <div class="card-status status-pending">Ожидают проверки</div>
-            <div class="card-actions">
-              <button>Открыть</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/300x180" alt="Фото" />
-          <div class="card-content">
-            <div class="card-title">Парк "Центральный"</div>
-            <div class="card-status status-problem">Проблемные</div>
-            <div class="card-actions">
-              <button>Открыть</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Можно добавлять ещё карточки -->
-      </div>
+      <div id="gallery" class="gallery"></div>
     </main>
   </div>
+
+  <script src="photos.js"></script>
 </body>
 </html>
