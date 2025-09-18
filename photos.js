@@ -28,7 +28,6 @@ photos.forEach(({ title, img, status, statusClass }) => {
       <div class="card-status ${statusClass}">${status}</div>
       <div class="card-actions">
         <button>Открыть</button>
-        <button>✏️</button>
       </div>
     </div>
   `;
