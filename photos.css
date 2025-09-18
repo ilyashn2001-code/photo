@@ -10,8 +10,8 @@ body {
   font-size: 14px;
   background: #f7f9fc;
   color: #222;
-  display: flex;
 }
+
 
 .app-container {
   display: flex;
