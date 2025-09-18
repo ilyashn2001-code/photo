@@ -38,37 +38,6 @@
     </main>
   </div>
 
-  <!-- Модальное окно чата -->
-  <div id="chatModal" class="chat-modal">
-    <div class="chat-box">
-      <div class="chat-box-header">
-        <h3>Чат по фото</h3>
-        <span class="chat-close">&times;</span>
-      </div>
-      <div class="chat-box-body">
-        <p class="chat-placeholder">Это окно для комментариев/чата по фотографии.</p>
-      </div>
-      <div class="chat-box-input">
-        <input type="text" placeholder="Отправить сообщение..." />
-      </div>
-    </div>
-  </div>
-
   <script src="photos.js"></script>
-  <script>
-    // Инициализация модалки
-    const modal = document.getElementById('chatModal');
-    const closeModal = document.querySelector('.chat-close');
-
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    document.addEventListener('click', (e) => {
-      if (e.target && e.target.classList.contains('open-chat')) {
-        modal.style.display = 'flex';
-      }
-    });
-  </script>
 </body>
 </html>
