@@ -72,7 +72,9 @@ body {
   flex-grow: 1;
   padding: 30px;
   overflow-x: hidden;
+  min-width: 0; /* 👈 ВАЖНО: добавили это */
 }
+
 
 .header {
   display: flex;
