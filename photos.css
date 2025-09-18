@@ -12,7 +12,6 @@ body {
   color: #222;
 }
 
-
 .app-container {
   display: flex;
   width: 100%;
@@ -76,11 +75,18 @@ body {
 }
 
 .header {
-  margin: 0 0 20px 0;
-  padding-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e2a3a;
+}
 
 /* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
 .top-bar {
