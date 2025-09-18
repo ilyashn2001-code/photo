@@ -22,7 +22,7 @@ body {
   width: 220px;
   background-color: #1e2a3a;
   color: white;
-  padding: 30px 20px 20px 20px; /* ⬅️ верх = 30px */
+  padding: 30px 20px 20px 18px; /* ⬅️ верх = 30px */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
