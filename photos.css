@@ -21,13 +21,17 @@ body {
   width: 180px;
   background-color: #1e2a3a;
   color: white;
-  padding: 20px;
+  padding: 0 20px;
   min-height: 100vh;
 }
 
-.sidebar h2 {
-  margin-bottom: 30px;
+.sidebar-header {
+  background-color: #1e2a3a;
+  padding: 16px 0;
+  text-align: center;
   font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 
 .sidebar ul {
@@ -78,7 +82,8 @@ body {
 }
 
 .top-bar button {
-  padding: 10px 14px;
+  position: relative;
+  padding: 10px 30px 10px 14px;
   border-radius: 6px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -87,6 +92,20 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.top-bar button::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #333;
 }
 
 .top-bar .btn-upload {
@@ -173,7 +192,7 @@ body {
   cursor: pointer;
 }
 
-/* ========== МОДАЛКА ЧАТА ========== */
+/* ========== МОДАЛКА ЧАТА (если есть) ========== */
 .chat-modal {
   display: none;
   position: fixed;
