@@ -20,7 +20,7 @@ body {
 
 /* ========== САЙДБАР ========== */
 .sidebar {
-  width: 220px;
+  width: 180px;
   background-color: #1e2a3a;
   color: white;
   padding: 20px;
@@ -60,7 +60,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  width: 2px;
+  width: 4px;
   height: 100%;
   background-color: #1e88e5;
   border-top-left-radius: 4px;
