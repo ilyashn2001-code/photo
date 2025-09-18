@@ -6,6 +6,8 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
   background: #f7f9fc;
   color: #222;
   display: flex;
@@ -34,6 +36,7 @@ body {
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
@@ -44,8 +47,24 @@ body {
 }
 
 .sidebar li.active {
+  position: relative;
   font-weight: bold;
   opacity: 1;
+  background-color: #2c3e50;
+  padding-left: 14px;
+  border-radius: 4px;
+}
+
+.sidebar li.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: #1e88e5;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 /* ========== ОСНОВНОЙ КОНТЕНТ ========== */
@@ -56,8 +75,9 @@ body {
 }
 
 .header h1 {
-  font-size: 26px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 /* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
@@ -78,31 +98,25 @@ body {
   min-width: 220px;
 }
 
-/* Обычные фильтры с треугольником */
-.top-bar .filter-btn {
+/* Кнопки фильтров с треугольником вниз */
+.top-bar button {
   position: relative;
-  padding: 10px 30px 10px 14px;
+  padding: 8px 28px 8px 12px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
-/* Стрелка вниз как в "Объектах" */
-.top-bar .filter-btn::after {
-  content: '';
+.top-bar button span.arrow {
   position: absolute;
   right: 10px;
-  top: 50%;
-  width: 0;
-  height: 0;
-  transform: translateY(-50%);
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 5px solid #333;
+  font-size: 10px;
+  color: #333;
 }
 
 /* Кнопка "Загрузить" */
@@ -110,9 +124,6 @@ body {
   background: #e0e0e0;
   color: #333;
   border: none;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
 }
 
 /* Кнопка "+ Добавить фото" */
@@ -120,9 +131,6 @@ body {
   background: #1e88e5;
   color: white;
   border: none;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
 }
 
 /* ========== ГАЛЕРЕЯ ========== */
@@ -188,7 +196,6 @@ body {
   gap: 10px;
 }
 
-/* Кнопки карточек — без карандаша */
 .card-actions button {
   font-size: 13px;
   padding: 6px 10px;
