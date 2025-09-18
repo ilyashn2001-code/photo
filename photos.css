@@ -74,18 +74,24 @@ body {
   overflow-x: hidden;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .header h1 {
   font-size: 28px;
   font-weight: 600;
-  margin-bottom: 20px;
   color: #1e2a3a;
+  margin: 0;
 }
-
 
 /* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
 .top-bar {
-  display: grid;
-  grid-template-columns: 1fr repeat(6, auto);
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   margin-bottom: 25px;
@@ -96,11 +102,10 @@ body {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
-  width: 100%;
-  min-width: 220px;
+  flex: 1 1 300px;
 }
 
-/* Общий стиль кнопок фильтров */
+/* Общие кнопки */
 .top-bar button {
   padding: 10px 14px;
   border-radius: 6px;
@@ -110,15 +115,16 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   white-space: nowrap;
 }
 
-/* Стрелка вниз (▼) */
-.top-bar button span.arrow {
+/* Кнопки фильтра с ▼ */
+.top-bar .filter-btn::after {
+  content: '▼';
   font-size: 10px;
   margin-left: 4px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 /* Загрузить — серая кнопка */
@@ -136,7 +142,6 @@ body {
   border: none;
   font-weight: 500;
 }
-
 
 /* ========== ГАЛЕРЕЯ ========== */
 .gallery {
