@@ -351,3 +351,10 @@ html, body {
 .btn-add:hover {
   background: var(--accent-hover);
 }
+.modal-body label {
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-color);
+  display: block;
+}
