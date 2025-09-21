@@ -285,14 +285,17 @@ html, body {
 
 .modal-close {
   cursor: pointer;
-  font-size: 20px;
-  color: var(--text-color);
+  font-size: 22px;
+  color: white; /* ← добавлено */
+  line-height: 1;
 }
+
 
 .modal-body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 20px; /* ← добавил отступ */
 }
 
 .modal-body input,
@@ -371,8 +374,22 @@ html, body {
   align-items: center;
 }
 
+.modal-close {
+  cursor: pointer;
+  font-size: 22px;
+  color: white;
+  line-height: 1;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
 .modal-footer {
-  margin-top: 16px;
   padding: 0 20px 16px;
   text-align: right;
 }
+
