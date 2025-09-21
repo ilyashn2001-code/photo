@@ -1,22 +1,48 @@
-/* ========== БАЗОВЫЕ СТИЛИ ========== */
+:root {
+  --bg-color: #f7f9fc;
+  --text-color: #1e2a3a;
+  --sidebar-bg: #1e2a3a;
+  --sidebar-text: white;
+  --sidebar-active-bg: #2c3e50;
+  --accent: #1e88e5;
+  --accent-hover: #1565c0;
+  --card-bg: white;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --border-color: #ccc;
+  --input-bg: white;
+  --modal-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* === DARK THEME === */
+[data-theme="dark"] {
+  --bg-color: linear-gradient(135deg, #1e003e, #b71c8d);
+  --text-color: #f7f9fc;
+  --sidebar-bg: #1c1c1c;
+  --sidebar-text: #fff;
+  --sidebar-active-bg: #333;
+  --accent: #b084f7;
+  --accent-hover: #a64ac9;
+  --card-bg: rgba(30, 30, 30, 0.8);
+  --card-shadow: rgba(255, 255, 255, 0.05);
+  --border-color: #555;
+  --input-bg: #2a2a2a;
+  --modal-bg: rgba(255, 255, 255, 0.15);
+}
+
+/* === BASE === */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html, body {
   height: 100%;
-}
-
-.container {
-  min-height: 100vh;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease;
   font-size: 14px;
-  background: #f7f9fc;
-  color: #222;
 }
 
 .app-container {
@@ -25,14 +51,11 @@ body {
   min-height: 100vh;
 }
 
-
-/* ========== САЙДБАР ========== */
 .sidebar {
   width: 220px;
-  background-color: #1e2a3a;
-  color: white;
-  padding: 30px 20px 20px 20px; /* ⬅️ верх = 30px */
-  min-height: 100vh;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 30px 20px 20px;
   display: flex;
   flex-direction: column;
 }
@@ -40,13 +63,10 @@ body {
 .sidebar h2 {
   font-size: 18px;
   margin-bottom: 30px;
-  line-height: 1.2;
 }
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .sidebar li {
@@ -59,11 +79,10 @@ body {
 }
 
 .sidebar li.active {
-  position: relative;
+  background-color: var(--sidebar-active-bg);
   font-weight: bold;
   opacity: 1;
-  background-color: #2c3e50;
-  padding-left: 14px; /* левая обводка */
+  position: relative;
 }
 
 .sidebar li.active::before {
@@ -73,90 +92,81 @@ body {
   top: 0;
   width: 4px;
   height: 100%;
-  background-color: #1e88e5;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  background-color: var(--accent);
+  border-radius: 4px 0 0 4px;
 }
 
-
-/* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+/* === MAIN === */
 .main-content {
   flex-grow: 1;
   padding: 30px;
-  overflow-x: hidden;
-  min-width: 0;
 }
 
 .header {
-  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  padding-top: 10px;
 }
 
 .header h1 {
-  margin: 0;
   font-size: 28px;
   font-weight: 600;
-  color: #1e2a3a;
 }
 
-/* ========== ФИЛЬТРЫ / ТОП-БАР ========== */
+/* === TOP BAR === */
 .top-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
   margin-bottom: 25px;
 }
 
 .top-bar input {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  font-size: 14px;
+  background-color: var(--input-bg);
   flex: 1 1 300px;
+  color: var(--text-color);
 }
 
-/* Общие кнопки */
-.top-bar button {
+.top-bar .filter-btn,
+.top-bar .btn-upload,
+.top-bar .btn-add {
   padding: 10px 14px;
   border-radius: 6px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  background: white;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  font-weight: 500;
+  font-size: 14px;
   white-space: nowrap;
 }
 
-/* Кнопки фильтра с ▼ */
-.top-bar .filter-btn::after {
+.filter-btn::after {
   content: '▼';
   font-size: 10px;
   margin-left: 4px;
-  margin-top: 1px;
 }
 
-/* Загрузить — серая кнопка */
-.top-bar .btn-upload {
+.btn-upload {
   background: #e0e0e0;
   color: #333;
   border: none;
-  font-weight: 500;
 }
 
-/* Добавить фото — синяя кнопка */
-.top-bar .btn-add {
-  background: #1e88e5;
+.btn-add {
+  background: var(--accent);
   color: white;
   border: none;
-  font-weight: 500;
 }
 
-/* ========== ГАЛЕРЕЯ ========== */
+.btn-add:hover {
+  background: var(--accent-hover);
+}
+
+/* === GALLERY === */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -164,12 +174,13 @@ body {
 }
 
 .card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px var(--card-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--border-color);
 }
 
 .card img {
@@ -197,20 +208,19 @@ body {
   margin-bottom: 10px;
 }
 
-/* Статусы */
 .status-checked {
-  background: #e0f4e9;
-  color: #2e7d32;
+  background: #d1fae5;
+  color: #065f46;
 }
 
 .status-pending {
-  background: #fff6e0;
-  color: #f57c00;
+  background: #fef3c7;
+  color: #92400e;
 }
 
 .status-problem {
-  background: #fdecea;
-  color: #c62828;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 .card-actions {
@@ -222,13 +232,91 @@ body {
 .card-actions button {
   font-size: 13px;
   padding: 6px 10px;
-  border: 1px solid #ccc;
-  background: white;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
   border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.card-actions button:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+/* === MODALS (будут позже подключены) === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-bg);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0 10px 20px var(--card-shadow);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.modal-footer {
+  margin-top: 16px;
+  text-align: right;
+}
+
+.modal-footer button {
+  padding: 8px 18px;
+  font-size: 13px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-/* Убрать редактирование/карандашик */
-.card-actions button.edit-btn {
-  display: none;
+.modal-footer button:hover {
+  background: var(--accent-hover);
 }
