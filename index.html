@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Фотографии</title>
+
+  <!-- Шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Стили -->
   <link rel="stylesheet" href="photos.css" />
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
   <div class="app-container">
     <aside class="sidebar">
-      <h2>LTC Control</h2>
+      <h2>Intellectual Journal</h2>
       <ul>
         <li>Дашборд</li>
         <li>Объекты</li>
@@ -22,6 +47,7 @@
     <main class="main-content">
       <header class="header">
         <h1>Фотографии</h1>
+        <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌗</button>
       </header>
 
       <div class="top-bar">
@@ -32,14 +58,29 @@
         <button class="filter-btn">Источник</button>
         <button class="filter-btn">Статус</button>
 
-        <button class="btn-upload">Загрузить</button>
-        <button class="btn-add">+ Добавить фото</button>
+        <button class="btn-upload" id="openUploadModal">Загрузить</button>
+        <button class="btn-add" id="openAddModal">+ Добавить фото</button>
       </div>
 
       <div id="gallery" class="gallery"></div>
     </main>
   </div>
 
+  <!-- Модалки будут подключены на следующем шаге -->
+
+  <!-- JS -->
   <script src="photos.js"></script>
+  <script>
+    // Смена темы
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </body>
 </html>
