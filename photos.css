@@ -320,3 +320,34 @@ html, body {
 .modal-footer button:hover {
   background: var(--accent-hover);
 }
+/* Фильтры как кнопки */
+.top-bar .filter-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+.top-bar .filter-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* Обновлённый стиль кнопки "Загрузить фото" */
+.btn-upload {
+  background: var(--input-bg);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  font-weight: 600;
+}
+.btn-upload:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+/* "Добавить фото" — остаётся синей, но делаем жирной */
+.btn-add {
+  background: var(--accent);
+  color: white;
+  font-weight: 700;
+}
+.btn-add:hover {
+  background: var(--accent-hover);
+}
