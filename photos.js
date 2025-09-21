@@ -64,20 +64,38 @@ createModal("uploadModal", "Загрузка фотографий", `
   <input type="file" accept="image/*" />
 `);
 
-// === Добавить Фото
+// === Добавить Фото — обновлённый дизайн
 createModal("addModal", "Добавить фото", `
+  <label>Фото:</label>
   <input type="file" accept="image/*" />
-  <input type="text" placeholder="Описание" />
+
+  <label>Описание:</label>
+  <textarea rows="2" placeholder="Краткое описание фото"></textarea>
+
+  <label>Журнал:</label>
   <select>
     <option value="">Выберите журнал</option>
-    <option>Журнал 1</option>
-    <option>Журнал 2</option>
-    <option>Журнал 3</option>
+    <option>Журнал строительства</option>
+    <option>Технический надзор</option>
+    <option>Контроль качества</option>
   </select>
-  <input type="text" placeholder="Широта" />
-  <input type="text" placeholder="Долгота" />
-  <input type="text" placeholder="Точность GPS (м)" />
+
+  <div style="display: flex; gap: 10px;">
+    <div style="flex: 1;">
+      <label>Широта:</label>
+      <input type="text" placeholder="55.7558" />
+    </div>
+    <div style="flex: 1;">
+      <label>Долгота:</label>
+      <input type="text" placeholder="37.6173" />
+    </div>
+    <div style="flex: 1;">
+      <label>Точность (м):</label>
+      <input type="text" placeholder="5.0" />
+    </div>
+  </div>
 `);
+
 
 // ==========================
 // ОБРАБОТЧИКИ МОДАЛОК
