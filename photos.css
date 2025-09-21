@@ -360,18 +360,20 @@ html, body {
 /* Обе кнопки — белый фон, голубый текст и рамка */
 .btn-upload,
 .btn-add {
-  background: white;
-  color: var(--accent);
-  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  border: none;
   font-weight: 600;
-  transition: background 0.3s ease, color 0.3s ease;
+  border-radius: 6px;
+  padding: 10px 14px;
+  transition: background 0.3s ease;
 }
 
 .btn-upload:hover,
 .btn-add:hover {
   background: var(--accent-hover);
-  color: white;
 }
+
 
 .modal-body label {
   font-weight: 500;
