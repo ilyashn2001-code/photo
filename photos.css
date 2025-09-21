@@ -337,27 +337,22 @@ html, body {
   background: var(--accent-hover);
 }
 
-/* Обновлённый стиль кнопки "Загрузить фото" */
-.btn-upload {
-  background: var(--input-bg);
+/* Обе кнопки — белый фон, голубый текст и рамка */
+.btn-upload,
+.btn-add {
+  background: white;
   color: var(--accent);
   border: 2px solid var(--accent);
   font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
 }
-.btn-upload:hover {
+
+.btn-upload:hover,
+.btn-add:hover {
   background: var(--accent-hover);
   color: white;
 }
 
-/* "Добавить фото" — остаётся синей, но делаем жирной */
-.btn-add {
-  background: var(--accent);
-  color: white;
-  font-weight: 700;
-}
-.btn-add:hover {
-  background: var(--accent-hover);
-}
 .modal-body label {
   font-weight: 500;
   margin-top: 10px;
