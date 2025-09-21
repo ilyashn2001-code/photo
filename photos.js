@@ -21,21 +21,47 @@ const photos = [
 
 const gallery = document.getElementById("gallery");
 
-photos.forEach(({ title, img, status, statusClass }) => {
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `
-    <img src="images/${img}" alt="${title}" />
-    <div class="card-content">
-      <div class="card-title">${title}</div>
-      <div class="card-status ${statusClass}">${status}</div>
-      <div class="card-actions">
-        <button>Открыть</button>
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+
+function renderGallery(filterText = "", status = "") {
+  gallery.innerHTML = "";
+
+  const filteredPhotos = photos.filter(({ title, status: s }) => {
+    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
+    const matchesStatus = !status || s === status;
+    return matchesSearch && matchesStatus;
+  });
+
+  filteredPhotos.forEach(({ title, img, status, statusClass }) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="images/${img}" alt="${title}" />
+      <div class="card-content">
+        <div class="card-title">${title}</div>
+        <div class="card-status ${statusClass}">${status}</div>
+        <div class="card-actions">
+          <button>Открыть</button>
+        </div>
       </div>
-    </div>
-  `;
-  gallery.appendChild(card);
+    `;
+    gallery.appendChild(card);
+  });
+}
+
+// Слушатели событий
+searchInput.addEventListener("input", () => {
+  renderGallery(searchInput.value, statusFilter.value);
 });
+
+statusFilter.addEventListener("change", () => {
+  renderGallery(searchInput.value, statusFilter.value);
+});
+
+// Первая отрисовка
+renderGallery();
+
 
 // ==========================
 // МОДАЛКИ
