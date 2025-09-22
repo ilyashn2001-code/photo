@@ -147,7 +147,7 @@ function renderGallery(filterText = "", status = "") {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="images/${img}" alt="${title}" />
+  <img src="photo/images/${img}" />
       <div class="card-content">
         <div class="card-title">${title}</div>
         <div class="card-status ${statusClass}">${status}</div>
