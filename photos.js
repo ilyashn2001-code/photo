@@ -25,36 +25,6 @@ function renderGallery(filterText = "", status = "") {
   });
 
 
-function renderGallery(filterText = "", status = "") {
-  gallery.innerHTML = "";
-
-  const filteredPhotos = photos.filter(({ title, status: s }) => {
-    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
-    const matchesStatus = !status || s === status;
-    return matchesSearch && matchesStatus;
-  });
-
-  filteredPhotos.forEach(({ title, img, status, statusClass }) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="images/${img}" alt="${title}" />
-      <div class="card-content">
-        <div class="card-title">${title}</div>
-        <div class="card-status ${statusClass}">${status}</div>
-        <div class="card-actions">
-          <button>Открыть</button>
-        </div>
-      </div>
-    `;
-
-    // 👇 Добавляем обработчик модалки
-    const index = photos.findIndex(p => p.img === img);
-    card.addEventListener("click", () => openPhotoModal(index));
-
-    gallery.appendChild(card);
-  });
-}
 
 
 
@@ -165,44 +135,66 @@ document.addEventListener("click", (e) => {
 // ==========================
 
 const photoModal = document.getElementById("photoModal");
-const sliderImg = document.getElementById("sliderImg");
-const closePhotoModal = document.getElementById("closePhotoModal");
-const prevSlide = document.getElementById("prevSlide");
-const nextSlide = document.getElementById("nextSlide");
 
-let currentPhotoIndex = 0;
+function openPhotoModal(img) {
+  photoModal.innerHTML = `
+    <div class="modal-content" style="width: auto; padding: 0; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
 
-// Открытие модалки по индексу фото
-function openPhotoModal(index) {
-  currentPhotoIndex = index;
-  updatePhoto();
+      <div class="modal-header" style="width: 100%; max-width: 640px; background: #1b2a38; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+        <h3 style="margin: 0; font-size: 18px; color: white;">Фото-отчет по объекту</h3>
+        <span class="modal-close" id="closePhotoModal" style="font-size: 22px; color: white; cursor: pointer;">&times;</span>
+      </div>
+
+      <div class="slider-wrapper" style="position: relative; max-width: 640px; width: 100%; background: #fff; display: flex; justify-content: center; align-items: center; padding: 20px;">
+        <button id="prevPhoto" class="slider-btn" style="
+          position: absolute;
+          left: -36px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          font-size: 18px;
+          cursor: pointer;
+          box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        ">❮</button>
+
+        <img id="modalPhoto" src="images/${img}" alt="Фото" style="max-width: 600px; max-height: 500px; object-fit: contain; border-radius: 6px;" />
+
+        <button id="nextPhoto" class="slider-btn" style="
+          position: absolute;
+          right: -36px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #fff;
+          border: 1px solid #ccc;
+          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          font-size: 18px;
+          cursor: pointer;
+          box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        ">❯</button>
+      </div>
+
+      <div id="photoIndex" style="margin: 10px 0 20px; font-size: 15px; color: #555;">Фото №1</div>
+    </div>
+  `;
+
   photoModal.style.display = "flex";
+
+  // Закрытие
+  document.getElementById("closePhotoModal").onclick = () => {
+    photoModal.style.display = "none";
+  };
+
+  // Стрелки (повтор того же изображения)
+  document.getElementById("prevPhoto").onclick = () => {
+    document.getElementById("modalPhoto").src = `images/${img}`;
+  };
+  document.getElementById("nextPhoto").onclick = () => {
+    document.getElementById("modalPhoto").src = `images/${img}`;
+  };
 }
-
-// Обновление изображения в модалке
-function updatePhoto() {
-  const photo = photos[currentPhotoIndex];
-  sliderImg.src = `images/${photo.img}`;
-}
-
-// Закрытие модалки
-closePhotoModal.addEventListener("click", () => {
-  photoModal.style.display = "none";
-});
-
-// Стрелка ←
-prevSlide.addEventListener("click", () => {
-  if (currentPhotoIndex > 0) {
-    currentPhotoIndex--;
-    updatePhoto();
-  }
-});
-
-// Стрелка →
-nextSlide.addEventListener("click", () => {
-  if (currentPhotoIndex < photos.length - 1) {
-    currentPhotoIndex++;
-    updatePhoto();
-  }
-});
-
