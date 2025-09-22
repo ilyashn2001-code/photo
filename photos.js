@@ -11,30 +11,25 @@ const gallery = document.getElementById("gallery");
 const searchInput = document.getElementById("searchInput");
 const statusFilter = document.getElementById("statusFilter");
 
-function renderGallery(filterText = "", status = "") {
-  gallery.innerHTML = "";
+filteredPhotos.forEach((photo) => {
+  const originalIndex = photos.findIndex(p => p.img === photo.img);
 
-  const filteredPhotos = photos.filter(({ title, status: s }) =>
-    title.toLowerCase().includes(filterText.toLowerCase()) &&
-    (!status || s === status)
-  );
-
-  filteredPhotos.forEach(({ title, img, status, statusClass }, index) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="images/${img}" alt="${title}" />
-      <div class="card-content">
-        <div class="card-title">${title}</div>
-        <div class="card-status ${statusClass}">${status}</div>
-        <div class="card-actions">
-          <button class="open-photo" data-index="${index}">Открыть</button>
-        </div>
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="images/${photo.img}" alt="${photo.title}" />
+    <div class="card-content">
+      <div class="card-title">${photo.title}</div>
+      <div class="card-status ${photo.statusClass}">${photo.status}</div>
+      <div class="card-actions">
+        <button class="open-photo" data-index="${originalIndex}">Открыть</button>
       </div>
-    `;
-    gallery.appendChild(card);
-  });
-}
+    </div>
+  `;
+
+  gallery.appendChild(card);
+});
+
 
 searchInput.addEventListener("input", () => {
   renderGallery(searchInput.value, statusFilter.value);
