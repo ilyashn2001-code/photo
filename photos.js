@@ -126,50 +126,48 @@ document.addEventListener("click", (e) => {
 
 
 // === ФОТО-МОДАЛКА ===
-const photoModal = document.createElement("div");
-photoModal.id = "photoModal";
-photoModal.className = "modal";
 photoModal.innerHTML = `
-  <div class="modal-content" style="width: 77%; padding: 20px; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
-    
-    <div class="modal-header" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-      <h3 style="margin: 0; font-size: 20px;">Фото-отчет по объекту</h3>
-      <span class="modal-close" id="closePhotoModal" style="font-size: 28px; cursor: pointer;">&times;</span>
+  <div class="modal-content" style="width: auto; padding: 0; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
+
+    <div class="modal-header" style="width: 100%; max-width: 640px; background: #1b2a38; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+      <h3 style="margin: 0; font-size: 18px; color: white;">Фото-отчет по объекту</h3>
+      <span class="modal-close" id="closePhotoModal" style="font-size: 22px; color: white; cursor: pointer;">&times;</span>
     </div>
 
-    <div class="slider-wrapper" style="position: relative; width: 100%; display: flex; justify-content: center; align-items: center;">
-      <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; font-size: 28px; background: none; border: none; cursor: pointer;">←</button>
-      
-      <img id="modalPhoto" src="" alt="Фото" style="max-width: 100%; max-height: 600px; object-fit: contain; border-radius: 6px;" />
+    <div class="slider-wrapper" style="position: relative; max-width: 640px; width: 100%; background: #fff; display: flex; justify-content: center; align-items: center; padding: 20px;">
+      <button id="prevPhoto" class="slider-btn" style="
+        position: absolute;
+        left: -36px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      ">❮</button>
 
-      <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; font-size: 28px; background: none; border: none; cursor: pointer;">→</button>
+      <img id="modalPhoto" src="" alt="Фото" style="max-width: 600px; max-height: 500px; object-fit: contain; border-radius: 6px;" />
+
+      <button id="nextPhoto" class="slider-btn" style="
+        position: absolute;
+        right: -36px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      ">❯</button>
     </div>
 
-    <div id="photoIndex" style="margin-top: 14px; font-size: 15px; color: #555;">Фото №1</div>
+    <div id="photoIndex" style="margin: 10px 0 20px; font-size: 15px; color: #555;">Фото №1</div>
   </div>
 `;
-document.body.appendChild(photoModal);
-
-// Фотка
-let currentPhoto = "";
-
-document.addEventListener("click", (e) => {
-  if (e.target.textContent === "Открыть") {
-    const card = e.target.closest(".card");
-    const imgSrc = card.querySelector("img").getAttribute("src");
-
-    currentPhoto = imgSrc;
-    document.getElementById("modalPhoto").src = currentPhoto;
-    document.getElementById("photoIndex").textContent = "Фото №1";
-    document.getElementById("photoModal").style.display = "flex";
-  }
-
-  if (e.target.id === "closePhotoModal") {
-    document.getElementById("photoModal").style.display = "none";
-  }
-
-  if (e.target.id === "prevPhoto" || e.target.id === "nextPhoto") {
-    document.getElementById("modalPhoto").src = currentPhoto;
-    document.getElementById("photoIndex").textContent = "Фото №1";
-  }
-});
