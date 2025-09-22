@@ -78,10 +78,6 @@ function createModal(id, title, contentHTML) {
   document.body.appendChild(modal);
 }
 
-// === Загрузить Фото
-createModal("uploadModal", "Загрузка фотографий", `
-  <input type="file" accept="image/*" />
-`);
 
 // === Добавить Фото — обновлённый дизайн
 createModal("addModal", "Добавить фото", `
@@ -119,9 +115,6 @@ createModal("addModal", "Добавить фото", `
 // ==========================
 // ОБРАБОТЧИКИ МОДАЛОК
 // ==========================
-document.getElementById("openUploadModal").addEventListener("click", () => {
-  document.getElementById("uploadModal").style.display = "flex";
-});
 
 document.getElementById("openAddModal").addEventListener("click", () => {
   document.getElementById("addModal").style.display = "flex";
