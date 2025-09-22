@@ -197,7 +197,7 @@ function openPhotoModal(index) {
       <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 720px; display: flex; justify-content: center; align-items: center; background: #fff; padding: 20px;">
         <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❮</button>
 
-        <img id="modalPhoto" src="images/${img}" alt="Фото" style="max-width: 640px; max-height: 480px; object-fit: contain; border-radius: 6px;" />
+        <img id="modalPhoto" src="photo/images/${img}" alt="Фото" style="max-width: 640px; max-height: 480px; object-fit: contain; border-radius: 6px;" />
 
         <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❯</button>
       </div>
