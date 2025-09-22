@@ -144,25 +144,27 @@ html, body {
   white-space: nowrap;
 }
 #statusFilter {
-  padding: 10px 36px 10px 12px;
+  padding: 10px 12px;
   font-size: 14px;
-  border: 2px solid var(--accent);
+  border: 1px solid black;
   border-radius: 6px;
   background-color: white;
-  color: var(--accent);
+  color: #333;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 8L0.803848 0.5L11.1962 0.5L6 8Z' fill='%231e88e5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='8' height='5' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 6L0.5 0.5H9.5L5 6Z' fill='%23555'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: calc(100% - 12px) center;
-  background-size: 12px;
+  background-position: right 10px center;
+  background-size: 8px;
+  padding-right: 28px;
   min-width: 140px;
   cursor: pointer;
+  transition: border 0.2s ease;
 }
 
-#statusFilter:focus {
-  outline: none;
-  border-color: var(--accent-hover);
+#statusFilter:hover {
+  border: 2px solid black;
 }
+
 
 .filter-btn::after {
   content: '▼';
