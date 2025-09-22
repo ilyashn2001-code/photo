@@ -435,7 +435,7 @@ html, body {
   padding: 0 20px 16px;
   text-align: right;
 }
-#photoModal.modal {
+.modal {
   display: none;
   position: fixed;
   z-index: 1000;
