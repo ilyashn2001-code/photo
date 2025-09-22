@@ -191,8 +191,14 @@ html, body {
 /* === GALLERY === */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  justify-content: center; /* Центрирует карточки при 1–2 элементах */
+}
+
+.card {
+  max-width: 320px; /* Не даём карточке растягиваться больше 320px */
+  width: 100%;      /* Чтобы занимала всю свою колонку */
 }
 
 
