@@ -130,38 +130,46 @@ const photoModal = document.createElement("div");
 photoModal.id = "photoModal";
 photoModal.className = "modal";
 photoModal.innerHTML = `
-  <div class="modal-content" style="max-width: 700px; padding: 20px; border-radius: 8px; position: relative;">
-    <span class="modal-close" id="closePhotoModal" style="position: absolute; right: 16px; top: 10px; font-size: 24px; cursor: pointer;">&times;</span>
-    <img id="modalPhoto" src="" alt="Фото" style="width: 100%; max-height: 500px; object-fit: contain; border-radius: 6px;" />
-    <div style="text-align: center; margin-top: 10px;">
-      <button id="prevPhoto">←</button>
-      <button id="nextPhoto">→</button>
+  <div class="modal-content" style="width: 77%; padding: 20px; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
+    
+    <div class="modal-header" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 style="margin: 0; font-size: 20px;">Фото-отчет по объекту</h3>
+      <span class="modal-close" id="closePhotoModal" style="font-size: 28px; cursor: pointer;">&times;</span>
     </div>
+
+    <div class="slider-wrapper" style="position: relative; width: 100%; display: flex; justify-content: center; align-items: center;">
+      <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; font-size: 28px; background: none; border: none; cursor: pointer;">←</button>
+      
+      <img id="modalPhoto" src="" alt="Фото" style="max-width: 100%; max-height: 600px; object-fit: contain; border-radius: 6px;" />
+
+      <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; font-size: 28px; background: none; border: none; cursor: pointer;">→</button>
+    </div>
+
+    <div id="photoIndex" style="margin-top: 14px; font-size: 15px; color: #555;">Фото №1</div>
   </div>
 `;
 document.body.appendChild(photoModal);
 
-// Текущее фото
+// Фотка
 let currentPhoto = "";
 
 document.addEventListener("click", (e) => {
-  // Открыть модалку
   if (e.target.textContent === "Открыть") {
     const card = e.target.closest(".card");
     const imgSrc = card.querySelector("img").getAttribute("src");
 
     currentPhoto = imgSrc;
     document.getElementById("modalPhoto").src = currentPhoto;
+    document.getElementById("photoIndex").textContent = "Фото №1";
     document.getElementById("photoModal").style.display = "flex";
   }
 
-  // Закрыть
   if (e.target.id === "closePhotoModal") {
     document.getElementById("photoModal").style.display = "none";
   }
 
-  // Стрелки — показывают то же фото
   if (e.target.id === "prevPhoto" || e.target.id === "nextPhoto") {
     document.getElementById("modalPhoto").src = currentPhoto;
+    document.getElementById("photoIndex").textContent = "Фото №1";
   }
 });
