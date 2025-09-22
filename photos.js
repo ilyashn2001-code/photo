@@ -39,27 +39,39 @@ statusFilter.addEventListener("change", () => {
 });
 renderGallery();
 
+
 // ==========================
 // МОДАЛКА "Добавить фото"
 // ==========================
-function createModal(id, title, contentHTML) {
-  const modal = document.createElement("div");
-  modal.id = id;
-  modal.className = "modal";
-  modal.innerHTML = `
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>${title}</h3>
-        <span class="modal-close" data-close="${id}">&times;</span>
+function renderGallery(filterText = "", status = "") {
+  gallery.innerHTML = "";
+
+  const filteredPhotos = photos.filter(({ title, status: s }) =>
+    title.toLowerCase().includes(filterText.toLowerCase()) &&
+    (!status || s === status)
+  );
+
+  filteredPhotos.forEach((photo) => {
+    const originalIndex = photos.findIndex(p => p.img === photo.img);
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="images/${photo.img}" alt="${photo.title}" />
+      <div class="card-content">
+        <div class="card-title">${photo.title}</div>
+        <div class="card-status ${photo.statusClass}">${photo.status}</div>
+        <div class="card-actions">
+          <button class="open-photo" data-index="${originalIndex}">Открыть</button>
+        </div>
       </div>
-      <div class="modal-body">${contentHTML}</div>
-      <div class="modal-footer">
-        <button>Сохранить</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(modal);
+    `;
+
+    gallery.appendChild(card);
+  });
 }
+
+
 
 createModal("addModal", "Добавить фото", `
   <label>Фото:</label>
