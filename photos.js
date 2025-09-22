@@ -123,3 +123,45 @@ document.addEventListener("click", (e) => {
     document.getElementById(id).style.display = "none";
   }
 });
+
+
+// === ФОТО-МОДАЛКА ===
+const photoModal = document.createElement("div");
+photoModal.id = "photoModal";
+photoModal.className = "modal";
+photoModal.innerHTML = `
+  <div class="modal-content" style="max-width: 700px; padding: 20px; border-radius: 8px; position: relative;">
+    <span class="modal-close" id="closePhotoModal" style="position: absolute; right: 16px; top: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+    <img id="modalPhoto" src="" alt="Фото" style="width: 100%; max-height: 500px; object-fit: contain; border-radius: 6px;" />
+    <div style="text-align: center; margin-top: 10px;">
+      <button id="prevPhoto">←</button>
+      <button id="nextPhoto">→</button>
+    </div>
+  </div>
+`;
+document.body.appendChild(photoModal);
+
+// Текущее фото
+let currentPhoto = "";
+
+document.addEventListener("click", (e) => {
+  // Открыть модалку
+  if (e.target.textContent === "Открыть") {
+    const card = e.target.closest(".card");
+    const imgSrc = card.querySelector("img").getAttribute("src");
+
+    currentPhoto = imgSrc;
+    document.getElementById("modalPhoto").src = currentPhoto;
+    document.getElementById("photoModal").style.display = "flex";
+  }
+
+  // Закрыть
+  if (e.target.id === "closePhotoModal") {
+    document.getElementById("photoModal").style.display = "none";
+  }
+
+  // Стрелки — показывают то же фото
+  if (e.target.id === "prevPhoto" || e.target.id === "nextPhoto") {
+    document.getElementById("modalPhoto").src = currentPhoto;
+  }
+});
