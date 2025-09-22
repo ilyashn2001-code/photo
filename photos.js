@@ -2,21 +2,12 @@
 // ГАЛЕРЕЯ
 // ==========================
 const photos = [
-  { title: "Строительство школы", img: "school_modern.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Офисное здание", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
-  { title: "Метро 'Юг'", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Парк 'Центральный'", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
-  { title: "Детский сад №12", img: "kindergarten_12.png", status: "Ожидают проверки", statusClass: "status-pending" },
-  { title: "Жилой дом, ул. Лесная", img: "residential_lesnaya.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Завод 'ТехПром'", img: "factory_techprom.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Торговый центр", img: "mall_main.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Кафе 'БургХаус'", img: "cafe_burghaus.png", status: "Ожидают проверки", statusClass: "status-pending" },
-  { title: "Автосалон Hyundai", img: "dealer_hyundai.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Мечеть 'Свет мира'", img: "mosque_light_of_world.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Больница №3", img: "hospital_3.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Салон красоты 'Мила'", img: "salon_mila.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Спорткомплекс", img: "sports_complex.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Почтовое отделение", img: "post_office.png", status: "Проверено", statusClass: "status-checked" }
+  { title: "Дворовая территория по адресу: Путевой пр. 38", img: "school_modern.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Дворовая территория по адресу: Каргопольская ул. 18", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Дворовая территория по адресу: Бестужевых ул. 27А", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
+  { title: "Дворовая территория по адресу: Челобитьевское шоссе 14 к.3, 14 к.4, 14 к.5", img: "kindergarten_12.png", status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Дворовая территория по адресу: Мира просп. 194", img: "residential_lesnaya.png", status: "Проверено", statusClass: "status-checked" }
 ];
 
 const gallery = document.getElementById("gallery");
