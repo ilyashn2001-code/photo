@@ -79,7 +79,6 @@ function createModal(id, title, contentHTML) {
 }
 
 
-// === Добавить Фото — обновлённый дизайн
 createModal("addModal", "Добавить фото", `
   <label>Фото:</label>
   <input type="file" accept="image/*" />
@@ -88,28 +87,26 @@ createModal("addModal", "Добавить фото", `
   <textarea rows="2" placeholder="Краткое описание фото"></textarea>
 
   <label>Журнал:</label>
-  <select>
-    <option value="">Выберите журнал</option>
-    <option>Журнал строительства</option>
-    <option>Технический надзор</option>
-    <option>Контроль качества</option>
+  <select disabled>
+    <option value="">Определяется автоматически</option>
   </select>
 
-  <div style="display: flex; gap: 10px;">
+  <div style="display: flex; gap: 10px; margin-top: 10px;">
     <div style="flex: 1;">
       <label>Широта:</label>
-      <input type="text" placeholder="55.7558" />
+      <input type="text" disabled placeholder="..." />
     </div>
     <div style="flex: 1;">
       <label>Долгота:</label>
-      <input type="text" placeholder="37.6173" />
+      <input type="text" disabled placeholder="..." />
     </div>
     <div style="flex: 1;">
       <label>Точность (м):</label>
-      <input type="text" placeholder="5.0" />
+      <input type="text" disabled placeholder="..." />
     </div>
   </div>
 `);
+
 
 
 // ==========================
