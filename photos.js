@@ -24,16 +24,23 @@ const gallery = document.getElementById("gallery");
 const searchInput = document.getElementById("searchInput");
 const statusFilter = document.getElementById("statusFilter");
 
-function renderGallery(filterText = "", status = "") {
-  gallery.innerHTML = "";
+function applyFilters() {
+  const search = searchInput.value.toLowerCase();
+  const selectedStatus = statusFilter.value;
 
-  const filteredPhotos = photos.filter(({ title, status: s }) => {
-    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
-    const matchesStatus = !status || s === status;
+  const filtered = photos.filter(({ title, status }) => {
+    const matchesSearch = title.toLowerCase().includes(search);
+    const matchesStatus = !selectedStatus || status === selectedStatus;
     return matchesSearch && matchesStatus;
   });
 
-  filteredPhotos.forEach(({ title, img, status, statusClass }) => {
+  renderGallery(filtered);
+}
+
+function renderGallery(photoList) {
+  gallery.innerHTML = "";
+
+  photoList.forEach(({ title, img, status, statusClass }) => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
@@ -49,6 +56,14 @@ function renderGallery(filterText = "", status = "") {
     gallery.appendChild(card);
   });
 }
+
+// Слушатели
+searchInput.addEventListener("input", applyFilters);
+statusFilter.addEventListener("change", applyFilters);
+
+// Первая отрисовка
+applyFilters();
+
 
 // Слушатели событий
 searchInput.addEventListener("input", () => {
