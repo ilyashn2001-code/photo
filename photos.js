@@ -24,6 +24,16 @@ function renderGallery(filterText = "", status = "") {
     return matchesSearch && matchesStatus;
   });
 
+
+function renderGallery(filterText = "", status = "") {
+  gallery.innerHTML = "";
+
+  const filteredPhotos = photos.filter(({ title, status: s }) => {
+    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
+    const matchesStatus = !status || s === status;
+    return matchesSearch && matchesStatus;
+  });
+
   filteredPhotos.forEach(({ title, img, status, statusClass }) => {
     const card = document.createElement("div");
     card.className = "card";
@@ -37,6 +47,11 @@ function renderGallery(filterText = "", status = "") {
         </div>
       </div>
     `;
+
+    // 👇 Добавляем обработчик модалки
+    const index = photos.findIndex(p => p.img === img);
+    card.addEventListener("click", () => openPhotoModal(index));
+
     gallery.appendChild(card);
   });
 }
