@@ -1,6 +1,3 @@
-// ==========================
-// ГАЛЕРЕЯ
-// ==========================
 const photos = [
   { title: "Дворовая территория по адресу: Путевой пр. 38", img: "school_modern.png", status: "Проверено", statusClass: "status-checked" },
   { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
@@ -17,13 +14,12 @@ const statusFilter = document.getElementById("statusFilter");
 function renderGallery(filterText = "", status = "") {
   gallery.innerHTML = "";
 
-  const filteredPhotos = photos.filter(({ title, status: s }) => {
-    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
-    const matchesStatus = !status || s === status;
-    return matchesSearch && matchesStatus;
-  });
+  const filteredPhotos = photos.filter(({ title, status: s }) =>
+    title.toLowerCase().includes(filterText.toLowerCase()) &&
+    (!status || s === status)
+  );
 
-  filteredPhotos.forEach(({ title, img, status, statusClass }) => {
+  filteredPhotos.forEach(({ title, img, status, statusClass }, index) => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
@@ -32,28 +28,20 @@ function renderGallery(filterText = "", status = "") {
         <div class="card-title">${title}</div>
         <div class="card-status ${statusClass}">${status}</div>
         <div class="card-actions">
-          <button>Открыть</button>
+          <button class="open-photo" data-index="${index}">Открыть</button>
         </div>
       </div>
     `;
-
-    const index = photos.findIndex(p => p.img === img);
-    card.addEventListener("click", () => openPhotoModal(index));
-
     gallery.appendChild(card);
   });
 }
 
-// Слушатели событий поиска и фильтра
 searchInput.addEventListener("input", () => {
   renderGallery(searchInput.value, statusFilter.value);
 });
-
 statusFilter.addEventListener("change", () => {
   renderGallery(searchInput.value, statusFilter.value);
 });
-
-// Первая отрисовка
 renderGallery();
 
 // ==========================
@@ -106,11 +94,9 @@ createModal("addModal", "Добавить фото", `
   </div>
 `);
 
-// Обработчики открытия/закрытия модалок
 document.getElementById("openAddModal").addEventListener("click", () => {
   document.getElementById("addModal").style.display = "flex";
 });
-
 document.addEventListener("click", (e) => {
   if (e.target.matches(".modal-close")) {
     const id = e.target.dataset.close;
@@ -121,53 +107,7 @@ document.addEventListener("click", (e) => {
 // ==========================
 // ФОТО-МОДАЛКА
 // ==========================
-
-const gallery = document.getElementById("gallery");
-const searchInput = document.getElementById("searchInput");
-const statusFilter = document.getElementById("statusFilter");
-
-function renderGallery(filterText = "", status = "") {
-  gallery.innerHTML = "";
-
-  const filteredPhotos = photos.filter(({ title, status: s }) => {
-    const matchesSearch = title.toLowerCase().includes(filterText.toLowerCase());
-    const matchesStatus = !status || s === status;
-    return matchesSearch && matchesStatus;
-  });
-
-  filteredPhotos.forEach(({ title, img, status, statusClass }, index) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-  <img src="images/${img}" />
-      <div class="card-content">
-        <div class="card-title">${title}</div>
-        <div class="card-status ${statusClass}">${status}</div>
-        <div class="card-actions">
-          <button class="open-photo" data-index="${index}">Открыть</button>
-        </div>
-      </div>
-    `;
-
-    gallery.appendChild(card);
-  });
-}
-
-searchInput.addEventListener("input", () => {
-  renderGallery(searchInput.value, statusFilter.value);
-});
-statusFilter.addEventListener("change", () => {
-  renderGallery(searchInput.value, statusFilter.value);
-});
-renderGallery();
-
-
-// ==========================
-// ФОТО-МОДАЛКА (ОТКРЫТИЕ)
-// ==========================
-
 const photoModal = document.getElementById("photoModal");
-
 let currentPhotoIndex = 0;
 
 function openPhotoModal(index) {
@@ -176,24 +116,18 @@ function openPhotoModal(index) {
 
   photoModal.innerHTML = `
     <div class="modal-content" style="width: auto; max-width: 90vw; max-height: 90vh; padding: 0; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
-      
       <div class="modal-header" style="width: 100%; background: var(--sidebar-bg); padding: 16px 24px; color: white; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
         <h3 style="margin: 0; font-size: 18px;">Фото-отчет по объекту</h3>
         <span class="modal-close" id="closePhotoModal" style="font-size: 22px; cursor: pointer;">&times;</span>
       </div>
-
       <div style="width: 100%; text-align: center; background: #f2f2f2; padding: 8px; font-weight: 500; color: #333;">
         ${title}
       </div>
-
       <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 720px; display: flex; justify-content: center; align-items: center; background: #fff; padding: 20px;">
         <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❮</button>
-
         <img id="modalPhoto" src="images/${img}" alt="Фото" style="max-width: 640px; max-height: 480px; object-fit: contain; border-radius: 6px;" />
-
         <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❯</button>
       </div>
-
       <div id="photoIndex" style="margin: 10px 0 20px; font-size: 14px; color: #555;">
         Фото ${index + 1} из ${photos.length}
       </div>
@@ -202,12 +136,9 @@ function openPhotoModal(index) {
 
   photoModal.style.display = "flex";
 
-  // Закрытие
   document.getElementById("closePhotoModal").onclick = () => {
     photoModal.style.display = "none";
   };
-
-  // Листание
   document.getElementById("prevPhoto").onclick = () => {
     openPhotoModal((currentPhotoIndex - 1 + photos.length) % photos.length);
   };
@@ -216,7 +147,6 @@ function openPhotoModal(index) {
   };
 }
 
-// Делегирование нажатия по кнопкам "Открыть"
 document.addEventListener("click", (e) => {
   if (e.target.matches(".open-photo")) {
     const index = parseInt(e.target.dataset.index);
