@@ -289,6 +289,24 @@ html, body {
   color: white;
 }
 
+.card-actions a {
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.card-actions a:hover {
+  background: var(--accent-hover);
+  color: white;
+}
+
+
 /* === MODALS (будут позже подключены) === */
 .modal {
   display: none;
