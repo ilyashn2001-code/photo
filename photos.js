@@ -30,9 +30,10 @@ function renderGallery(filterText = "", status = "") {
       <div class="card-content">
         <div class="card-title">${photo.title}</div>
         <div class="card-status ${photo.statusClass}">${photo.status}</div>
-        <div class="card-actions">
-          <button class="open-photo" data-index="${originalIndex}">Открыть</button>
-        </div>
+<div class="card-actions">
+  <a href="images/${photo.img}" target="_blank" class="open-photo-link">Открыть</a>
+</div>
+
       </div>
     `;
 
