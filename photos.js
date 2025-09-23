@@ -20,25 +20,26 @@ function renderGallery(filterText = "", status = "") {
     (!status || s === status)
   );
 
-  filteredPhotos.forEach((photo) => {
-    const originalIndex = photos.findIndex(p => p.img === photo.img);
+filteredPhotos.forEach((photo, index) => {
+  const originalIndex = photos.findIndex(p => p.img === photo.img);
 
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="images/${photo.img}" alt="${photo.title}" />
-      <div class="card-content">
-        <div class="card-title">${photo.title}</div>
-        <div class="card-status ${photo.statusClass}">${photo.status}</div>
-<div class="card-actions">
-  <a href="images/${photo.img}" target="_blank" class="open-photo-link">Открыть</a>
-</div>
-
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="images/${photo.img}" alt="${photo.title}" />
+    <div class="card-content">
+      <div class="card-title">${photo.title}</div>
+      <div class="card-status ${photo.statusClass}">${photo.status}</div>
+      <div class="card-actions">
+        <a href="photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}"
+           target="_blank"
+           class="open-photo-link">Открыть</a>
       </div>
-    `;
+    </div>
+  `;
+  gallery.appendChild(card);
+});
 
-    gallery.appendChild(card);
-  });
 }
 
 searchInput.addEventListener("input", () => {
