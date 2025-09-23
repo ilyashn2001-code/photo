@@ -47,7 +47,10 @@ searchInput.addEventListener("input", () => {
 statusFilter.addEventListener("change", () => {
   renderGallery(searchInput.value, statusFilter.value);
 });
-renderGallery(); // 🎉 Вызов первой отрисовки
+<div class="card-actions">
+  <a href="photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}" target="_blank" class="open-photo-link">Открыть</a>
+</div>
+
 
 // ==========================
 // МОДАЛКА "Добавить фото"
