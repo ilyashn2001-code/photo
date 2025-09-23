@@ -1,5 +1,5 @@
 const photos = [
-  { title: "Дворовая территория по адресу: Путевой пр. 38", img: "school_modern.png", status: "Проверено", statusClass: "status-checked" },
+  { title: "Дворовая территория по адресу: Путевой пр. 38", img: "school_modern.png", additional: ["akbars.png"], status: "Проверено", statusClass: "status-checked" },
   { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
   { title: "Дворовая территория по адресу: Каргопольская ул. 18", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
   { title: "Дворовая территория по адресу: Бестужевых ул. 27А", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
@@ -117,27 +117,51 @@ let currentPhotoIndex = 0;
 
 function openPhotoModal(index) {
   currentPhotoIndex = index;
-  const { title, img } = photos[index];
+  const photoSet = [photos[index].img, ...(photos[index].additional || [])];
+  let currentSlide = 0;
 
-  photoModal.innerHTML = `
-    <div class="modal-content" style="width: auto; max-width: 90vw; max-height: 90vh; padding: 0; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
-      <div class="modal-header" style="width: 100%; background: var(--sidebar-bg); padding: 16px 24px; color: white; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-        <h3 style="margin: 0; font-size: 18px;">Фото-отчет по объекту</h3>
-        <span class="modal-close" id="closePhotoModal" style="font-size: 22px; cursor: pointer;">&times;</span>
+  function renderSlide() {
+    const { title } = photos[index];
+    const img = photoSet[currentSlide];
+
+    photoModal.innerHTML = `
+      <div class="modal-content" style="width: auto; max-width: 90vw; max-height: 90vh; padding: 0; border-radius: 8px; position: relative; background: white; display: flex; flex-direction: column; align-items: center;">
+        <div class="modal-header">
+          <h3>Фото-отчет по объекту</h3>
+          <span class="modal-close" id="closePhotoModal">&times;</span>
+        </div>
+        <div style="width: 100%; text-align: center; background: #f2f2f2; padding: 8px; font-weight: 500; color: #333;">
+          ${title}
+        </div>
+        <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 720px; display: flex; justify-content: center; align-items: center; background: #fff; padding: 20px;">
+          <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❮</button>
+          <img id="modalPhoto" src="images/${img}" alt="Фото" style="max-width: 640px; max-height: 480px; object-fit: contain; border-radius: 6px;" />
+          <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❯</button>
+        </div>
+        <div id="photoIndex" style="margin: 10px 0 20px; font-size: 14px; color: #555;">
+          Фото ${currentSlide + 1} из ${photoSet.length}
+        </div>
       </div>
-      <div style="width: 100%; text-align: center; background: #f2f2f2; padding: 8px; font-weight: 500; color: #333;">
-        ${title}
-      </div>
-      <div class="slider-wrapper" style="position: relative; width: 100%; max-width: 720px; display: flex; justify-content: center; align-items: center; background: #fff; padding: 20px;">
-        <button id="prevPhoto" class="slider-btn" style="position: absolute; left: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❮</button>
-        <img id="modalPhoto" src="images/${img}" alt="Фото" style="max-width: 640px; max-height: 480px; object-fit: contain; border-radius: 6px;" />
-        <button id="nextPhoto" class="slider-btn" style="position: absolute; right: -40px; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #ccc; border-radius: 50%; width: 36px; height: 36px; font-size: 18px; cursor: pointer;">❯</button>
-      </div>
-      <div id="photoIndex" style="margin: 10px 0 20px; font-size: 14px; color: #555;">
-        Фото ${index + 1} из ${photos.length}
-      </div>
-    </div>
-  `;
+    `;
+
+    document.getElementById("closePhotoModal").onclick = () => {
+      photoModal.style.display = "none";
+    };
+    document.getElementById("prevPhoto").onclick = () => {
+      currentSlide = (currentSlide - 1 + photoSet.length) % photoSet.length;
+      renderSlide();
+    };
+    document.getElementById("nextPhoto").onclick = () => {
+      currentSlide = (currentSlide + 1) % photoSet.length;
+      renderSlide();
+    };
+
+    photoModal.style.display = "flex";
+  }
+
+  renderSlide();
+}
+
 
 
   photoModal.style.display = "flex";
