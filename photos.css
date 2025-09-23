@@ -100,7 +100,9 @@ html, body {
 .main-content {
   flex-grow: 1;
   padding: 30px;
+  max-width: 100%;
 }
+
 
 .header {
   display: flex;
@@ -191,14 +193,17 @@ html, body {
 /* === GALLERY === */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
+
 .card {
-  max-width: 320px; /* Не даём карточке растягиваться больше 320px */
-  width: 100%;      /* Чтобы занимала всю свою колонку */
+  /* max-width: 320px; ← удалить */
+  width: 100%;
 }
+
 
 
 
