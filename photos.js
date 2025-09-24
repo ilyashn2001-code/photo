@@ -30,11 +30,13 @@ function renderGallery(filterText = "", status = "") {
       <div class="card-content">
         <div class="card-title">${photo.title}</div>
         <div class="card-status ${photo.statusClass}">${photo.status}</div>
-        <div class="card-actions">
-          <a href="./photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}"
-             target="_blank"
-             class="open-photo-link">Открыть</a>
-        </div>
+   <div class="card-actions">
+  <a href="./photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}"
+     target="_blank"
+     class="open-photo-link">Открыть</a>
+  <button class="btn-description" data-desc="${encodeURIComponent(photo.description || 'Описание отсутствует')}">Описание работ</button>
+</div>
+
       </div>
     `;
     gallery.appendChild(card);
@@ -49,6 +51,15 @@ statusFilter.addEventListener("change", () => {
 });
 
 renderGallery(); // при загрузке
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-description")) {
+    const desc = decodeURIComponent(e.target.dataset.desc);
+    document.getElementById("descModalText").textContent = desc;
+    document.getElementById("descModal").style.display = "flex";
+  }
+});
+
 
 // ==========================
 // МОДАЛКА "Добавить фото"
