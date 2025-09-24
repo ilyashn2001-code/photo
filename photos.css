@@ -530,3 +530,7 @@ html, body {
   white-space: pre-line;
   line-height: 1.6;
 }
+#filter-area {
+  width: 120px;
+  font-size: 13px;
+}
