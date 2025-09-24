@@ -15,10 +15,11 @@ const statusFilter = document.getElementById("statusFilter");
 function renderGallery(filterText = "", status = "") {
   gallery.innerHTML = "";
 
-  const filteredPhotos = photos.filter(({ title, status: s }) =>
-    title.toLowerCase().includes(filterText.toLowerCase()) &&Описание работ
-    (!status || s === status)
-  );
+const filteredPhotos = photos.filter(({ title, status: s }) =>
+  title.toLowerCase().includes(filterText.toLowerCase()) &&
+  (!status || s === status)
+);
+
 
   filteredPhotos.forEach((photo, index) => {
     const originalIndex = photos.findIndex(p => p.img === photo.img);
