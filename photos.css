@@ -495,4 +495,21 @@ html, body {
   background: var(--accent-hover);
   color: #fff;
 }
+.text-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.text-btn:hover {
+  color: var(--accent-hover);
+}
 
