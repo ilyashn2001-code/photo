@@ -34,7 +34,9 @@ function renderGallery(filterText = "", status = "") {
   <a href="./photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}"
      target="_blank"
      class="open-photo-link">Открыть</a>
-  <button class="btn-description" data-desc="${encodeURIComponent(photo.description || 'Описание отсутствует')}">Описание работ</button>
+  <button class="btn-description text-btn" data-desc="${encodeURIComponent(photo.description || 'Описание отсутствует')}">
+  <i class="fas fa-info-circle"></i> Описание работ
+</button>
 </div>
 
       </div>
