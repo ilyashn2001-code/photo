@@ -16,7 +16,7 @@ function renderGallery(filterText = "", status = "") {
   gallery.innerHTML = "";
 
   const filteredPhotos = photos.filter(({ title, status: s }) =>
-    title.toLowerCase().includes(filterText.toLowerCase()) &&
+    title.toLowerCase().includes(filterText.toLowerCase()) &&Описание работ
     (!status || s === status)
   );
 
@@ -34,9 +34,10 @@ function renderGallery(filterText = "", status = "") {
   <a href="./photo.html?title=${encodeURIComponent(photo.title)}&photos=${encodeURIComponent(JSON.stringify([photo.img, ...(photo.additional || [])]))}"
      target="_blank"
      class="open-photo-link">Открыть</a>
-  <button class="btn-description text-btn" data-desc="${encodeURIComponent(photo.description || 'Описание отсутствует')}">
-  <i class="fas fa-info-circle"></i> Описание работ
+<button class="btn-description text-btn" data-desc="${encodeURIComponent(photo.description || 'Описание отсутствует')}">
+  <span class="info-icon">i</span> Описание работ
 </button>
+
 </div>
 
       </div>
