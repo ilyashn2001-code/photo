@@ -482,4 +482,17 @@ html, body {
   opacity: 0.9;
 }
 
+.btn-description {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn-description:hover {
+  background: var(--accent-hover);
+  color: #fff;
+}
 
