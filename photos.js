@@ -1,5 +1,5 @@
 const photos = [
-  { title: "Дворовая территория по адресу: Путевой пр. 38", img: "school_modern.png", additional: ["akbars.png"], status: "Проверено", statusClass: "status-checked" },
+  { title: "Дворовая территория по адресу: Путевой пр. 38",   img: "Путевой_1.png", additional: ["Путевой_2.png", "Путевой_3.png"], status: "Проверено", statusClass: "status-checked" },
   { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
   { title: "Дворовая территория по адресу: Каргопольская ул. 18", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
   { title: "Дворовая территория по адресу: Бестужевых ул. 27А", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
