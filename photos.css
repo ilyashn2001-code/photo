@@ -506,23 +506,23 @@ html, body {
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  box-shadow: none; /* убрать тень от btn */
 }
 
 .text-btn:hover {
   color: var(--accent-hover);
 }
 
-.text-btn i {
+/* 👇 Новый стиль для круглой "i" иконки */
+.text-btn .info-icon {
   background-color: var(--accent);
   color: white;
+  font-weight: bold;
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 11px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   width: 18px;
   height: 18px;
-  line-height: 1;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  display: inline-block;
 }
