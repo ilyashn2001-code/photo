@@ -1,10 +1,10 @@
 const photos = [
   { title: "Дворовая территория по адресу: Путевой пр. 38",   img: "Путевой_1.png", additional: ["Путевой_2.png", "Путевой_3.png"], status: "Проверено", statusClass: "status-checked" },
-  { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "office_building.png", status: "Ожидают проверки", statusClass: "status-pending" },
-  { title: "Дворовая территория по адресу: Каргопольская ул. 18", img: "metro_yug.png", status: "Проверено", statusClass: "status-checked" },
-  { title: "Дворовая территория по адресу: Бестужевых ул. 27А", img: "park_central.png", status: "Проблемные", statusClass: "status-problem" },
-  { title: "Дворовая территория по адресу: Челобитьевское шоссе 14 к.3, 14 к.4, 14 к.5", img: "kindergarten_12.png", status: "Ожидают проверки", statusClass: "status-pending" },
-  { title: "Дворовая территория по адресу: Мира просп. 194", img: "residential_lesnaya.png", status: "Проверено", statusClass: "status-checked" }
+  { title: "Дворовая территория по адресу: Флотская ул. 54, 58 к.1", img: "Флотская_1.png",  additional: ["Флотская_2.png", "Флотская_3.png"], status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Дворовая территория по адресу: Каргопольская ул. 18", img: "Каргопольская_1.png",  additional: ["Каргопольская_2.png", "Каргопольская_3.png"], status: "Проверено", statusClass: "status-checked" },
+  { title: "Дворовая территория по адресу: Бестужевых ул. 27А", img: "Бестужевых_1.png",  additional: ["Бестужевых_2.png", "Бестужевых_3.png"], status: "Проблемные", statusClass: "status-problem" },
+  { title: "Дворовая территория по адресу: Челобитьевское шоссе 14 к.3, 14 к.4, 14 к.5", img: "Челобитьевское_1.png",  additional: ["Челобитьевское_2.png"], status: "Ожидают проверки", statusClass: "status-pending" },
+  { title: "Дворовая территория по адресу: Мира просп. 194", img: "Мира_1.png",  additional: ["Мира_2.png", "Мира_3.png"], status: "Проверено", statusClass: "status-checked" }
 ];
 
 const gallery = document.getElementById("gallery");
